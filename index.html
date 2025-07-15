@@ -1,0 +1,831 @@
+ 
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- mobile setting -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+	<style type="text/css">
+		html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* make sure to set some focus styles for accessibility */
+:focus {
+    outline: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input[type=search] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    max-width: 100%;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/**
+ * 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    font-size: 100%; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    -ms-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+strong {
+    font-weight: bold;
+    margin: 8px 0;
+    margin-top: 38px;
+    display: block;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 26px;
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+
+
+
+div {
+    padding: 32px 28px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.hedaer {
+    background: #000;
+    text-align: center;
+    padding: 12px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: inline-block;
+}
+
+.hedaer img {
+    height: 40px;
+}
+
+
+a {
+    word-break: break-all;
+}
+
+	</style>
+
+  <style type="text/css" id="operaUserStyle"></style><style type="text/css"></style></head>
+
+<body>
+
+  
+
+   
+
+    <div>
+    	 <h1>Privacy Policy</h1>
+    	<p> <strong>1-Purpose</strong></p>
+
+<p>This Privacy Policy is part of the Haydibil Terms of Service (“Terms of Service”). “Haydibil” and “we” refer to the developer(s) of the Haydibil application and services provided through www.haydibil.com.. This Privacy Policy explains our online and offline practices regarding the data, the types of the data that we collect, our intention to use, store, protect, disclose and share this data, how you can waive your consent for this data to be used in a certain way, and the way you can correct this data or change it.</p>
+
+<p><strong>2.Extent</strong></p>
+
+<p>
+Haydibil’s websites (each referred to as the “Site”), mobile applications, forums, blogs, and other online or offline services provided now or in the future (collectively referred to as the “Services”) are subject to this Privacy Policy. All personal data processed as part of these Services is covered by this policy. Anyone involved in handling user data within the scope of Haydibil’s Services is expected to protect such data in accordance with this Privacy Policy. This Privacy Policy is intended to apply globally, including but not limited to Turkey, North America, Europe, Asia-Pacific regions, and other countries.</p>
+
+<p>
+If you do not agree with this Privacy Policy or the Terms of Service, please do not install or use the Haydibil application or its related services.
+</p>
+
+<p>Please note that Haydibil is not responsible for the actions of third parties, the content on third-party websites, the data you share with them, or how they provide their services.</p>
+
+<p>Haydibil reserves the right to change or update this Privacy Policy at any time. By continuing to use the application or its services after changes are made, you acknowledge and accept the updated Privacy Policy.</p>
+
+<p><strong>3. Types of Personal Data We Collect and How We Use It</strong></p>
+
+<p>The type of personal data Haydibil may collect (either directly from you or via third-party services) depends on how you use the application and the requirements of applicable privacy laws. As an independent developer, Haydibil may collect personal data in various ways, including:
+</p>
+
+<p>You may provide data to Haydibil directly by interacting with the app—for example, when giving feedback, answering surveys, entering contests, or requesting specific features or support.</p>
+
+<p>Some data may also be collected passively through cookies and similar technologies while you use the app or browse related content.</p>
+
+<p>The main purpose of collecting your data is to provide and improve the Haydibil app, manage how you use it, and ensure a smooth and enjoyable user experience. Only data necessary for these purposes is collected. Below, you can find details on what personal data may be collected and how it is used.</p>
+
+<p></p>
+
+<p><strong>3.1 Types of Personal Data We Collect</strong></p>
+
+<p>Haydibil may collect personal data about users of the app, both current and past, as well as individuals who interact with the app in any way (collectively referred to as “users”).</p>
+
+<p><strong>3.1.1 Data We Collect From Third Parties While Downloading and Playing Games</strong></p>
+
+<p> When you use the Haydibil app through mobile platforms (such as Android or iOS) or connect via social networking services (SNS) like Facebook, certain data may be collected based on your privacy settings and the permissions you grant. The information collected depends on the data sharing policies of the platform and may also be affected by the privacy settings of your social media friends, if applicable.</p>
+
+<p>
+Data that may be collected by Haydibil through social platforms can include your name, username, profile picture (or its URL), location, gender, email address (used during sign-up), age range (e.g., over 21), preferred language, time zone, and, if permitted, the user IDs of your social media friends who also use the app.</p>
+
+<p>Haydibil may collect technical information from your device when you use the app on a mobile platform. This may include your device’s unique ID (temporary or permanent), operating system and version, device model, CPU, RAM, available storage, hardware type, advertising ID (such as IDFA or Google Advertising ID), device name, and your approximate location based on IP address. This information helps diagnose technical issues and understand how users interact with the app.</p>
+
+<p>Payments for the Haydibil app are handled by third-party platforms (such as Google Play or the App Store). Haydibil does not collect, store, or have access to personal payment information such as your name, address, credit card number, phone number, or email used during payment. However, these third-party services may share limited non-financial data with Haydibil—such as which items were purchased—so that your order can be completed properly.</p>
+
+<p> You can manage the data collected from third-party platforms where you use the Haydibil app, such as Facebook. To control what information is shared, you should adjust your privacy settings within that platform. You can also review and modify app permissions at any time by visiting the “Settings” section on your mobile device.</p>
+
+<p>If you access or connect to our Services through a third-party application, you may also need to read the terms of service and privacy policies of the applications.</p>
+
+<p></p>
+
+<p></p>
+
+<p><strong>3.1.2 Direct Collection of Data</strong></p>
+
+<p>If you use the Services or create an account for our games, provide feedback, request services or data , or contact us directly, we may ask you to provide all or some of the following data :</p>
+
+<p><strong>Creating Account;</strong> if you create an account to use our services, we may ask you for Personal Data such as your name, email address and profile data .</p>
+
+<p>Contacting Us; if you request data about our Services, request customer support or technical support, or contact us, we may collect Personal Data from you, such as your e-mail address, telephone number or postal address.</p>
+
+<p><strong>User comments;</strong> When sharing your comments about our games, you may share some data, which may include your Personal Data. All data obtained from your participation in these comments are the data you provide voluntarily. We may use this data in any way in accordance with the policies contained herein to improve our products, sites and/or Services.</p>
+
+<p><strong>Fan Pages, Forums, and Site Posts;</strong>
+ Haydibil may provide access to public platforms such as fan pages, blogs, private messages, or community forums. Please note that if you share personal information on these platforms, that data may be collected by the sites and could become publicly visible. Any content you share in public areas is considered “public” and may not be protected under this Privacy Policy. </p>
+
+<p><strong>Contest Applications;</strong> 
+Haydibil may organize contests or giveaways from time to time. Participants may be asked to provide contact information, such as an email address. If you join a contest, the information you provide may be used to contact you about the contest results or for promotional and informational purposes. You will always have the option to opt out of any messages not directly related to the prize.</p>
+
+<p><strong>3.1.3 Automatic Collection of Data</strong></p>
+
+<p>Server log files and tracking such as cookies, web beacons and/or tracking pixels can be used by us or by the service providers acting on our behalf such as Google Analytics, MoPub Analytics, Yandex Analytics, Adjust, Appsflyer.</p>
+
+<p>We may collect certain data such as; your Internet protocol (IP) address, cookie identifiers, mobile device advertising identifiers such as your mobile device's Advertising Identifier (IDFA), Advertising ID, Game Center ID, type of computer or mobile device you use, your device operating system, version, model, hardware type and other device identifiers automatically determined for your computer or device when you access the Internet, browser type and language, hardware type, operating system, Internet service provider, pages you visit before and after using the Services , the date and time of your visit, the time you spend on each page, the links you click within the Services, and data about the pages you visit and your preferences using the technologies that mentioned before, through our Services or other web analytics methods.</p>
+
+<p>In some cases, it may associate this data with your social network ID, device identifier, Game Center ID, or Advertising ID. You can find more data in detail about tracking technologies in Article 3.3 of this Privacy Policy.</p>
+
+<p><strong>3.1.4 Data Offered Through the Services</strong></p>
+
+<p>
+You agree that Haydibil is free to use any ideas, inventions, concepts, techniques, know-how, and other information included in your communications through the Services for purposes such as developing, producing, or marketing the Services. Haydibil will not disclose your name or identify you in connection with any materials or data you submit unless: (a) you have given explicit consent; (b) you were previously informed that the material or data would be used with your name; or (c) we are legally required to do so.
+</p>
+
+<p><strong>3.1.5 Ad Networks</strong></p>
+
+<p>Haydibil may show advertisements within the app. Advertising networks that serve these ads may collect and use certain information, including:</p>
+
+<p>Data related to performance or game content, such as your session actions related to games;</p>
+
+<p>Aggregated and/or disidentification informations that is not specifically intended to identify a player;</p>
+
+<p>Technical data such as device identifiers, Advertising ID and IP address.</p>
+
+<p>Ad Networks may use this data to serve ads based on your interests or especially to target you.</p>
+
+<p><strong>3.1.6 Social Media Items</strong></p>
+
+<p>On/in the Services, there are social media features such as the Facebook and Twitter button, and Widgets such as the "Share" button or interactive mini programs that work on the Services. These features may collect data about your IP address and the page of the Services you visit and may enable a cookie to ensure these features work properly. Social Media Features and Widgets may be offered by a third party or directly through our Services. The interaction with these features is governed by the privacy policy of the company which offers the feature.</p>
+
+<p><strong>3.2 How We Process Your Data</strong></p>
+
+<p>
+Haydibil collects and uses data primarily to improve your gameplay experience, provide app functionality, contact you when needed, run ads, conduct research, and generate general usage reports. Your data may be stored using cloud services such as Google servers, which may be located in the United States or other countries.</p>
+
+<p>We may collect, store, use and process Personal Data for a variety of business purposes, including:</p>
+
+<p><strong>Providing Requested Services or Data</strong></p>
+
+<p>We may use the data about you that we collect through the Services to provide the Services to you, including but not limited to the following:</p>
+
+<p>Operate, improve, and optimize Haydibil’s games and other Services;</p>
+
+<p>Create game accounts and allow users to play our games;</p>
+
+<p>To understand you and your choices in order to personalise our Services, improve your user experience, and enable you to enjoy using our Services;</p>
+
+<p>To provide access to certain parts, functions and features of our Services;</p>
+
+<p>To notify you of our offers regarding game updates, new products and promotions,</p>
+
+<p>To send relevant data such as confirmation, technical notification, update, security alert, support messages and administrative messages.</p>
+
+<p>To allow our players to communicate with each other in-game or on their social media accounts;</p>
+
+<p>To respond to your comments or requests regarding our Services and to provide customer support;</p>
+
+<p>To prevent the possibility of prohibited or unlawful acts and to protect our players from;</p>
+
+<p>To measure interest in our Services;</p>
+
+<p>To ensure internal quality control; and</p>
+
+<p>Authenticate people's identities.</p>
+
+<p>To inform you about our Games, Products and Services</p>
+
+<p>
+Haydibil may use your data to inform you about new features, games, content, or other updates that may be of interest to you. This may include in-app offers, push notifications, email messages, or online ads, such as:</p>
+
+<p>to transmit advertising, marketing and promotional data to you;</p>
+
+<p>personalize content, advertising and offers;</p>
+
+<p>inform you about products and services or special offers/events that may be of interest to you; and</p>
+
+<p>To inform you about awards, research, competitions, or other promotional activities or events offered or supported by Haydibil or our business partners.</p>
+
+<p>
+With the opt-out link provided in the correspondence from the relevant notification materials, you can choose to turn off the notifications from the options section on your mobile device or SNS settings, or by sending an email to hayydibil@gmail.com, without incurring any cost.
+</p>
+
+<p><strong>Sending Push Notifications</strong></p>
+
+<p>
+Haydibil may occasionally send you push notifications through the mobile app to inform you about game updates, high scores, or other useful information. If you prefer not to receive these notifications, you can turn them off anytime from your device's notification settings.
+</p>
+
+<p><strong>Usage of Anonymized and Aggregated Data</strong></p>
+
+<p>
+Haydibil may use demographic information, location data, and details about your device to create anonymous and aggregated data that cannot be used to identify you. This data helps us analyze how users interact with different parts of the app. Since anonymized and aggregated data is not considered personal data, we may use it for research, internal analysis, or other legal purposes. We may also share this type of data with third parties or use it ourselves, always in a way that does not reveal your identity.
+</p>
+
+<p>Providing Services via Mobile Devices</p>
+
+<p>From time to time, we may offer Services that are specifically designed to be compatible with and use on mobile devices. When you use these Services, we may collect certain data sent from your mobile device, such as device identifier, user settings, location data, mobile service provider and your device's operating system. For mobile versions of our games, users may need to log in with their Account. In these cases, data about mobile versions of our Games may be associated with Accounts.</p>
+
+<p><strong>3.3 Cookies, Pixel Tags/Web Beacons, Analytics, and Interest-Based or Behavioral Advertising</strong></p>
+
+<p>
+Haydibil or third-party services used in the app may use cookies, pixel tags, or similar technologies ("Technologies") to automatically collect data. These technologies are small data files placed on your phone, tablet, or computer. They help us remember certain information when you use the app, track usage patterns, and recognize your device if you switch between different devices.
+</p>
+
+<p><strong>Cookies;</strong> Cookies are small text files placed on visitors' browsers to store their preferences. Most browsers allow you to block and delete cookies. However, if you do, the Site may not function properly.</p>
+
+<p><strong>Social Media Widgets;</strong> Our website includes social media features such as the Facebook "Like" button and Linked-In (which may include items such as the share button or other interactive mini-programs). These features may collect data about your IP address, collects page data which you visit on our site, and for the feature to work properly it may place a cookie. These social media features are hosted either by a Third Party or directly on our Website. Your interaction with these features is subject to privacy policy of the company who provides the feature.</p>
+
+<p><strong>Analytics;</strong> We may use Google Analytics and Google Analytics Demographics and Interest Reports to collect data about visitor behavior or demographic data on some of our Services. This analytical data is not subject to Personal Data and the Data generated by Google Analytics about usage, including the user's truncated current IP address, is transmitted to and stored on the Google server. Due to enabling the IP anonymisation, Google will truncate your IP address in a member state of the European Union or European Economic Area before transmitting it to the USA. For data about Google Analytics, you can visit www.google.com/policies/privacy/partners/.The user may option to choose not to collect and process data generated about their use of the Services by Google by visiting http://tools.google.com/dlpage/gaoptout.</p>
+
+<p><strong>Usage of these technologies under the following general categories:</strong></p>
+
+<p><strong>Relation to Operation;</strong> We may use cookies, web beacons or other similar technologies as necessary for the functionality of our sites, services, applications and tools. Also, it includes technologies necessary to identify inappropriate behavior on the site, prevent fraudulent transactions, and increase security, and which allows you to access our sites, services, applications and tools.</p>
+
+<p><strong>Relation to Performance;</strong> For performance review of our websites, applications, services and tools, we may use cookies, web tools or other similar technologies including the part of analytics applications that help us understand our visitor’s usage of our website.</p>
+
+<p><strong>Relation to Functionality;</strong> We may use cookies, web beacons and other similar technologies that allow us to provide enhanced functionality when you access our sites, services, applications or tools. To serve better content on our sites, or tracking your stated preferences, interests, or products you have viewed in the past, Technologies may identify you when you logged in.</p>
+
+<p><strong>Relation to Advertising or Target Audience;</strong> Usage of cookies and web beacons belonging to us or third parties to deliver content such as advertisements that are of interest to you on our sites or on the sites of third parties. Including, using technologies to understand whether the ads and content served to you are useful to you, such as whether you clicked on an ad or not. If you want to block the Technologies that on sites, services, apps and tools , you can block, delete or disable them as permitted by your browser or device.</p>
+
+<p></p>
+
+<p></p>
+
+<p><strong>Choice of “Do Not Track” Cookies</strong></p>
+
+<p>You can arrange your browser settings in your computer to warn you about attempts to place cookies or limit the types of cookies you allow. Flash cookies work differently from browser cookies and tools available in a browser may not be effective in removing flash cookies. Cookies are necessary to track and improve your activities on our Services, so if you disable cookies, you may lose some features or functionality of our Services.</p>
+
+<p></p>
+
+<p><strong>3.4 Third Party Websites, Social Media Platforms and Software Development Kits</strong></p>
+
+<p>Our Site may contain links to other websites, and other websites may also reference or link to our Site or other Services. These other domains and websites are not controlled by us and we do not endorse, review or endorse the privacy practices or content of other websites or apps and also we are not responsible for them. We encourage our users to read the privacy policies of every website and application they interact with. Visiting these other websites or applications is at your own risk.</p>
+
+<p>
+Haydibil may include links to social media platforms or interactive features such as share buttons. If you use these features, cookies from those platforms may be placed on your device. Any personal data you share publicly—such as on blogs, chat areas, or social media—can be seen and used by others. Please be aware that we cannot control how third parties use the information you share on external platforms, and you take full responsibility for any data you choose to make public.
+</p>
+
+<p><strong>3.5 Processing of Payments to Third Parties</strong></p>
+
+<p>
+
+Haydibil may offer virtual items or content for purchase through the app. All payments are handled by third-party platforms such as the Google Play Store, Apple App Store, or other providers. These platforms may collect information like your name, email address, and billing details to process the payment. Haydibil does not collect or have access to your payment or billing information.
+</p>
+
+<p><strong>4. How We May Disclose Your Data</strong></p>
+
+<p>Third Party Websites, Social Media Platforms and Software Development Kits</p>
+
+<p>We may share your data as stated in this Privacy Policy (with our Third-Party service providers to provide our Services; to protect and defend our rights and property) or with your consent to comply with legal obligations.</p>
+
+<p><strong>Service Providers;</strong> 
+
+We may share your data with third-party service providers who help us deliver and support our services. These providers may include: (i) IT and infrastructure services; (ii) data and content delivery platforms; (iii) payment processors; (iv) customer support services; and (v) other partners essential to operating the Services. Haydibil ensures that such providers only access Personal Data when necessary, and that they handle it in compliance with applicable privacy laws.
+</p>
+
+<p><strong>Business partners;</strong> 
+Haydibil may share Personal Data with trusted business partners in order to provide the Services you have requested or to support related functionality. If a product or service is offered together with a partner, their name will be clearly shown alongside Haydibil. These partners are expected to keep any shared Personal Data secure and confidential, and to use it only for the specific purposes for which it was provided.
+</p>
+
+<p><strong>Interacting with Friends and Other Users;</strong> Our Services supporting your interaction with other players. If you play our games on a social network or register for our games on a social network (such as Facebook), your friends on that social network will able to see your name, profile photo and descriptions of your activity in the game. Similarly, other players, whether they are your social network friend or not, are able to see descriptions of your game activity, contact you via chat feature in our games, and view your game profile, which may include your name or "the name you use in the game" and your profile photo. In some cases, your profile photo may reveal your social network ID or gamer ID and accessing your social network ID or gamer ID may allow others to view publicly available data associated with your relevant social network profile or game account. The content you share will also be visible in the chat area of ​​the Games. We are not responsible for the privacy-related behavior of other users who will view and use the shared data.</p>
+
+<p><strong>Marketing – Interest-Based or Behavioral Advertising and Third-Party Advertising Activities;</strong></p>
+
+<p>Haydibil may allow third-party advertising partners to place tracking tools (such as cookies) on its Services to collect the following types of data:</p>
+
+<p>performance data (as how many times an ad has been clicked);</p>
+
+<p>certain technical data (IP address, non-permanent device identifier such as IDFA and permanent de-identified device identifier such as hashed Android ID);</p>
+
+<p>your social network identifier;</p>
+
+<p>other content data related to your gameplay (such as your level or session duration); and</p>
+
+<p>not directly identify your identity (pseudonymous-like nickname) (such as operating system name and versions, device models, time).</p>
+
+<p>These advertising partners may use this data (and similar data collected from other websites) to measure how effective the ads are in order to serve behavioral ads to you through our games within their networks. This practice is commonly known as "interest-based or behavioral advertising" ("interest-based" or "targeted advertising"). We may also provide access to other data collected by the Services to facilitate the transmission of data that may be useful, relevant, valuable or otherwise of interest to you.</p>
+
+<p><strong>Protected Posts (e.g., disclosures required by law and similar Disclosures).</strong></p>
+
+<p>
+
+We may access, store, or share your Personal Data, other data, and content related to your account only when necessary to: (i) comply with law enforcement or national security requests and legal processes such as court orders and subpoenas; (ii) respond to your inquiries or requests; (iii) protect the rights, property, or safety of you, us, or others; (iv) enforce Haydibil’s policies or agreements; (v) collect any amounts owed to Haydibil; (vi) prevent bodily harm or financial loss, or assist in investigations or prosecutions of suspected illegal activities; or (vii) when we believe in good faith that such sharing is necessary or appropriate for other legitimate reasons.
+
+</p>
+
+<p>Moreover, server logs may be reviewed for security purposes from time to time. (e.g. determine whether unauthorized activities have been performed on the Services. In this situation, data containing IP addresses in server logs of the unauthorized activities may be shared with law enforcement so that they can identify users in connection.</p>
+
+<p><strong>Merger, Sale and Other Asset Transfer;</strong>
+
+If we are the subject of a merger, acquisition, financial due diligence, restructuring, bankruptcy, appointment of a trustee, sale of company assets, or transfer of services to another service provider, your data may also be sold or transferred as part of that transaction, as permitted by law and/or contract. In such a case, Haydibil will endeavor to ensure that the transferee uses the Personal Data in a manner consistent with the Privacy Policy in effect at the time such Personal Data was collected.
+
+</p>
+
+<p><strong>5. International Transfer</strong></p>
+
+<p>
+All Personal Data collected by or through Haydibil may be stored in Turkey, the United States, the European Union, and possibly other countries worldwide—in the cloud, on our servers, on the servers of our affiliates, or those of our service providers. When we transfer your data internationally, we take reasonable measures to ensure that your Personal Data is handled securely, lawfully, and in accordance with our Privacy Policies. Please note that legal requirements may vary between countries, and the privacy laws in the regions where your data is transferred, stored, used, or processed may differ from those in your country of residence.
+
+</p>
+
+<p>While providing data to Haydibil, you consent to the storage of your Personal Data in these locations.
+
+</p>
+
+<p>If you access our Services from the European Union or other regions with the law measures regarding the collection and use of data, you agree to the transfer of your data to Turkey and the United States and to the worldwide to process your data.</p>
+
+<p>
+It is considered that you have accepted that any disputes regarding privacy or the terms in this Privacy Policy will be governed by the laws of the Republic of Turkey, and that any disputes regarding Haydibil or the Site will be resolved in accordance with the Terms of Use, when you visit the site, use the Services, and otherwise provide us the data.
+</p>
+
+<p><strong>6. Opt-Out (Right to Restrict Processing)</strong></p>
+
+<p>
+You have the right to choose not to use or share your Personal Data in certain ways. If you have previously given Haydibil permission to process your Personal Data or Sensitive Personal Data, you can withdraw your consent at any time by contacting us at hayydibil@gmail.com. After doing so, we will stop processing your data. However, we may still collect and use non-personal and anonymized information about how you interact with our Services.
+</p>
+
+<p>Also, You should consider that some of the records about payments or customer service matters, will be retained for legal and accounting purposes. Moreover, we may not be able to delete such content if you post through our Services.</p>
+
+<p><strong>Correspondence of Emails</strong></p>
+
+<p>If you receive an unwanted e-mail from us, you can click the unsubscribe link at the bottom of the e-mail to avoid receiving any further e-mails. After receiving such request, we will process this request within a reasonable time. We remind you that you will continue to receive e-mails in connection with transactions about the requested products and Services.
+
+</p>
+
+<p><strong>Mobile Devices</strong></p>
+
+<p>
+Sometimes, Haydibil may send push notifications about game updates, high scores, and other topics you may be interested in via its mobile apps. You can always opt out of receiving such communications by changing the settings on your mobile device. Also, Haydibil may collect location data if you use its mobile applications. You can prevent this data from being collected by changing the settings on your mobile device.
+</p>
+
+<p><strong>Cookies and Interest-Based or Targeted Advertising</strong></p>
+
+<p>As stated above, you can prevent or restrict the installation of cookies on your computer, or remove them from your browser, from the preferences in your web browser. You can visit the Adobe’s Website and make changes using the Global Privacy Settings Panel, to learn more about and manage Flash cookies.</p>
+
+<p>
+The online advertising industry also offers websites that allow you to opt out of targeted advertising from our data partners and other advertising partners who participate in industry self-regulation programs. You can access them via the Network Advertising Initiative Consumer Opt-Out Page, Your Online Choices, or the Digital Advertising Alliance Opt-Out Page for ads in the USA and learn about targeted advertising, consumer choices, and privacy. You can also opt out of Google Analytics via its opt-out page. Please note that Haydibil does not operate or control these tools offered by third parties, and the options provided by these tools, advertisers, or others using these tools are not the responsibility of Haydibil.
+</p>
+
+<p>
+
+On mobile devices, you can reset your Advertising ID (such as IDFA or Google Advertising ID) from your device’s settings. This action prevents further use of behavioral data linked to your previous Ad ID. Additionally, depending on your platform provider (such as Apple or Google), you may be able to download tools like the AppChoices app by the Digital Advertising Alliance to control the collection and use of cross-app data for personalized ads. As with the web-based opt-out tools, these mobile opt-out tools are provided by third parties, and Haydibil does not operate or control them or the choices offered by advertisers through these tools.
+
+</p>
+
+<p>To be clear, when you use our opt-out options or the online industry opt-out options, you must make these cookie-based opt-out options on each device and browser from which you wish to opt out. For example, when you use the opt-out option on your computer, this choice will not be valid on your mobile device.</p>
+
+<p></p>
+
+<p><strong>7. Rights to Access, Rectification, Deletion and Restriction</strong></p>
+
+<p>You have the right to request access, rectify or delete of your Personal Data, and to request restrictions on the processing of this data, to object, and to request the transfer of data.</p>
+
+<p>The general right of objection applies to any type of data processing as described in this Privacy Policy. Unlike your right to object to processing for direct marketing purposes, we are obligated to comply with your objection if you have given specific reasons about your particular situation.</p>
+
+<p>Except as otherwise permitted by applicable law, you can create a support request within our games or email to hayydibil@gmail.com to request access to, porting, rectification or deletion of Personal Data held about you by haydibil. We kindly ask you to write your full name, user identifier and e-mail address associated with your Account and explain your request for data in detail. These requests will be handled in accordance with applicable law.</p>
+
+<p>Haydibil strives in good faith to allow Persons to access their Personal Data, however, if the data is subject to legal confidentiality requirements, access would violate the privacy or other legitimate rights of others, the burden or expense of providing access should be disproportionate to the risks posed to the Person's privacy right in the particular case. In situation where too much or commercial secrecy is at issue, Haydibil will not able to Access. If Haydibil determines that access should be restricted in a particular situation, we will give you reasons on why this determination was made and share a contact data so you can contact if you have further questions. To protect your privacy, Haydibil will take commercially reasonable steps to verify your identity prior to accessing or changing your Personal Data.</p>
+
+<p><strong>8. Data Storage</strong></p>
+
+<p>Haydibil collects Personal Data as specified in this Privacy Policy, as long as you use our Services or to fulfill the purposes for which this data was collected, to provide the Services, to resolve disputes, to establish legal defenses, to perform audits, to achieve legitimate business purposes, to enforce contracts and retains it for as long as necessary to comply with applicable laws.</p>
+
+<p><strong>9. Data Security</strong></p>
+
+<p>The personal data you provide to us is stored on servers located in secure facilities and is protected within the framework of protocols and procedures designed to ensure the security of such data in accordance with industry standards, such as firewalls and data encryption. However, no server, computer, communication network or system, or data transmission over the Internet can be guaranteed to be 100% secure. Therefore, as  Haydibil, although we take all kinds of technical measures to protect user data and make great efforts to ensure data security, we cannot absolutely guarantee the security of the data you transmit to us or that you share through the Services.</p>
+
+<p>When you use the Services or provide Confidential Data to us, you agree that we may communicate with you electronically regarding security, privacy, and governance matters relating to your use of the Services. If we become aware that a security system has been breached, we may notify you electronically by posting a notice on the Services, emailing you, or sending a push notification.</p>
+
+<p><strong>10. Confidentiality of Minor's Personal Data</strong></p>
+
+<p>
+The Services are not intended for children under the age of 13, and Haydibil does not knowingly collect or process personally identifiable data from children under 13 years old. If you are a parent or guardian of a child under the age of 13 (or under 16 in certain countries within the European Union) who is using our app, please contact us at hayydibil@gmail.com. We will delete your child's personal data unless you confirm that they have your permission to continue using the app.
+</p>
+
+<p><strong>11. Relief / Compliance and Accountability</strong></p>
+
+<p>If you have any questions regarding our privacy practices or Privacy Policy, please contact haydibil at hayydibil@gmail.com. We will promptly help to your queries and assist on solving outstanding privacy related issues.</p>
+
+<p><strong>12. Change in Privacy Policy and Practices</strong></p>
+
+<p><strong>Revision of the Privacy Policy;</strong> At our sole discretion, our privacy policy might revised, so you should review this policy regularly. If you continue to visit this Site and use the services offered to you after such changes are made, you consent to such changes.</p>
+
+<p>
+If there are any material changes to this Privacy Policy, Haydibil will notify you by email or by other means as required by law. We will also publish updates to this Privacy Policy on our website, and the revised version will become effective immediately upon posting (or upon notification, if applicable). If you have any concerns about how your data is used, we recommend bookmarking this page and reviewing the Privacy Policy periodically.
+
+</p>
+
+<p><strong>New Scheme for Usage of Personal Data;</strong> In addition to the above, we will endeavor to notify you of the new purpose and give you the opportunity to opt out before we use Personal Data for new purposes that you did not originally authorize. In other cases where the law or a contract requires the consent of the Person for the Processing of Confidential Data, Haydibil will endeavor to comply with the law or contract.
+
+</p>
+
+<p id="terms" style="height: 64px"> </p>
+<p> <strong>13.Subscription Terms</strong> </p>
+
+<p><strong>Here is the following subscription period available in our game:</strong></p>
+
+<p>Pro Membership offers a weekly subscription, you will be charged $3.99 per week. After buying this subscription, you will get Double Daily Gift, 2 free hints per level and Remove Ads. This is an Auto-renewable subscription. The payment is charged to your account after confirmation. The subscription is renewed unless you turn it off 24 hours before the period ends.
+</p>
+<p>he prices are established for United States customers. Pricing in other countries may change and actual charges may be converted to your local currency.
+</p>
+
+<p><strong>End of trial and subscription renewal:</strong></p>
+<ul>
+<li>The payment is charged to your account after a confirmation of purchase.</li>
+<li>The subscription is renewed unless you turn it off 24 hours before the end of the current period at the cost of the weekly subscription.
+</li>
+<li>The user may manage subscription and auto-renewal have to be turned off by going to the user’s account settings after purchase in the Store.
+</li>
+<li>No cancellation of the current subscription is allowed during the active subscription period.
+</li>
+</ul>
+
+<p><strong>Cancelling a trial or a subscription:</strong></p>
+<p>If you want to cancel a subscription you have to cancel it through your account in the Store. This must be done at least 24 hours before to avoid being charged.</p>
+
+
+<p><strong>14. Contact Info of Data Controller's</strong></p>
+
+<p>If you have any questions regarding to privacy practices or this Privacy Policy, you can contact Haydibil's data protection officer by sending an e-mail hayydibil@gmail.com</p>
+
+
+
+<p><strong>15. How to Request Data Deletion</strong></p> <p>If you wish to delete your personal data that has been collected through Haydibil, you may submit a deletion request by sending an email to <strong>hayydibil@gmail.com</strong> with the subject line “Data Deletion Request.”</p> <p>To process your request securely, please include the following in your email:</p> <ul> <li>Your full name</li> <li>The username or ID associated with your account (if applicable)</li> <li>The email address linked to your account</li> </ul> <p>We will review your request and delete your data within 30 days, as required by applicable law. Please note that we may retain some data if legally required (e.g., for accounting or fraud prevention purposes).</p> <p>You may also request deletion directly through the app by navigating to: <br> <strong>Settings > Privacy > Request Data Deletion</strong> (if such an option exists in your app interface).</p>
+	</div>
+</body></html>
